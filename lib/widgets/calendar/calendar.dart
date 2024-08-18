@@ -17,6 +17,7 @@ class _CalendarState extends State<Calendar> {
     final calendarModel = Provider.of<CalendarModel>(context);
 
     return TableCalendar(
+      currentDay: calendarModel.selectedDate,
       locale: 'ko_KR',
       headerStyle: const HeaderStyle(formatButtonVisible: false),
       calendarStyle: CalendarStyle(
@@ -37,8 +38,10 @@ class _CalendarState extends State<Calendar> {
       firstDay: DateTime(1900),
       lastDay: DateTime(3000),
       pageJumpingEnabled: true,
-      selectedDayPredicate: (DateTime date) =>
-          calendarModel.selectedDate == date,
+      selectedDayPredicate: (DateTime date) {
+        if (calendarModel.selectedDate != date) return false;
+        return calendarModel.selectedDate!.isAtSameMomentAs(date);
+      },
       onDaySelected: (selectedDay, focusedDay) {
         calendarModel.selectedDate = selectedDay;
         calendarModel.currentViewDate = focusedDay;

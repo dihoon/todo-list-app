@@ -4,17 +4,23 @@ class CalendarModel with ChangeNotifier {
   DateTime? _selectedDate;
   DateTime? _currentViewDate;
 
+  CalendarModel(this._selectedDate, this._currentViewDate);
+
   DateTime? get selectedDate => _selectedDate;
 
   set selectedDate(DateTime? date) {
-    _selectedDate = date;
-    notifyListeners();
+    if (_selectedDate != date) {
+      _selectedDate = date;
+      notifyListeners();
+    }
   }
 
   DateTime? get currentViewDate => _currentViewDate;
 
   set currentViewDate(DateTime? date) {
-    _currentViewDate = date;
-    notifyListeners();
+    if (_currentViewDate != date) {
+      _currentViewDate = date;
+      notifyListeners();
+    }
   }
 }
