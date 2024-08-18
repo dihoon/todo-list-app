@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/models/calendar_model.dart';
 import 'package:todo_list/widgets/calendar/calendar.dart';
+import 'package:todo_list/widgets/todo_list/todo_list.dart';
 import 'package:todo_list/widgets/todo_list_banner/todo_list_banner.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -21,6 +22,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Calendar(),
               TodoListBanner(),
+              TodoList(),
             ],
           ),
         ),

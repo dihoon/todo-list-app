@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ScheduleModel with ChangeNotifier {
   DateTime date;
-  DateTime startDate;
-  DateTime endDate;
+  DateTime startTime;
+  DateTime endTime;
   DateTime createdAt;
   DateTime? updatedAt;
   String content;
@@ -11,8 +11,8 @@ class ScheduleModel with ChangeNotifier {
 
   ScheduleModel(
       {required this.date,
-      required this.startDate,
-      required this.endDate,
+      required this.startTime,
+      required this.endTime,
       required this.content,
       this.isCompleted = false,
       required this.createdAt,
