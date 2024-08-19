@@ -30,22 +30,12 @@ class Todo extends StatelessWidget {
           ),
           child: IntrinsicHeight(
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                        '${startTime.hour.toString().padLeft(2, '0')}:${startTime.minute.toString().padLeft(2, '0')}'),
-                    Text(
-                        '${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}')
-                  ],
-                ),
-                SizedBox(width: 10),
                 Expanded(child: Text('내용')),
                 IconButton(
                     iconSize: 30,
-                    color: Colors.red,
+                    color: Colors.black,
                     padding: EdgeInsets.all(0),
                     onPressed: () {},
                     icon: Icon(Icons.check_box_outline_blank)),
