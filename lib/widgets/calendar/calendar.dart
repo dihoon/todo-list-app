@@ -21,18 +21,19 @@ class _CalendarState extends State<Calendar> {
       locale: 'ko_KR',
       headerStyle: const HeaderStyle(formatButtonVisible: false),
       calendarStyle: CalendarStyle(
-          isTodayHighlighted: false,
-          defaultDecoration: const BoxDecoration(color: Colors.transparent),
-          selectedDecoration: BoxDecoration(
+        isTodayHighlighted: false,
+        defaultDecoration: const BoxDecoration(color: Colors.transparent),
+        selectedDecoration: BoxDecoration(
+          color: AppColors.primary,
+          border: Border.all(
+            width: 1.0,
             color: AppColors.primary,
-            border: Border.all(
-              width: 1.0,
-              color: AppColors.primary,
-            ),
           ),
-          selectedTextStyle: const TextStyle(
-            color: Colors.white,
-          )),
+        ),
+        selectedTextStyle: const TextStyle(
+          color: Colors.white,
+        ),
+      ),
       daysOfWeekHeight: 20,
       focusedDay: calendarModel.currentViewDate ?? DateTime.now(),
       firstDay: DateTime(1900),

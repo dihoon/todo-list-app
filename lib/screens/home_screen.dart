@@ -14,19 +14,22 @@ class HomeScreen extends StatelessWidget with HomeController {
   Widget build(BuildContext context) {
     final now = DateTime.now();
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => onFloatingButtonPressed(context),
-        child: Icon(Icons.add, color: Colors.white),
-        backgroundColor: AppColors.primary,
-      ),
-      body: SafeArea(
-        child: ChangeNotifierProvider(
-          create: (BuildContext context) => CalendarModel(
-            DateTime.utc(now.year, now.month, now.day),
-            DateTime.utc(now.year, now.month, now.day),
-          ),
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => CalendarModel(
+          DateTime.utc(now.year, now.month, now.day),
+          DateTime.utc(now.year, now.month, now.day)),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        floatingActionButton: Builder(
+          builder: (context) {
+            return FloatingActionButton(
+              onPressed: () => onFloatingButtonPressed(context),
+              child: Icon(Icons.add, color: Colors.white),
+              backgroundColor: AppColors.primary,
+            );
+          },
+        ),
+        body: SafeArea(
           child: Column(
             children: [
               Calendar(),

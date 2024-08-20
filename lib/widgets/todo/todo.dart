@@ -1,21 +1,24 @@
+import 'package:drift/drift.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:todo_list/database/database.dart';
 
 class Todo extends StatelessWidget {
-  final DateTime startTime;
-  final DateTime endTime;
+  final int id;
   final String content;
   final bool isCompleted;
 
   const Todo({
     super.key,
-    required this.startTime,
-    required this.endTime,
+    required this.id,
     required this.content,
-    required this.isCompleted,
+    this.isCompleted = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final database = GetIt.instance<AppDatabase>();
+
     return Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -32,13 +35,21 @@ class Todo extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(child: Text('내용')),
+                Expanded(child: Text(content)),
                 IconButton(
-                    iconSize: 30,
-                    color: Colors.black,
-                    padding: EdgeInsets.all(0),
-                    onPressed: () {},
-                    icon: Icon(Icons.check_box_outline_blank)),
+                  iconSize: 30,
+                  color: Colors.black,
+                  padding: EdgeInsets.all(0),
+                  onPressed: () {
+                    database.updateScheduleById(
+                        id,
+                        ScheduleTableCompanion(
+                            isCompleted: Value(!isCompleted)));
+                  },
+                  icon: Icon(isCompleted
+                      ? Icons.check_box_outlined
+                      : Icons.check_box_outline_blank),
+                ),
               ],
             ),
           ),
